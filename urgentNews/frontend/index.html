@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>urgentNews</title>
+</head>
+<body>
+  <h1>urgentNews</h1>
+  <div id="news"></div>
+
+  <script>
+    fetch('http://localhost:5000/getUrgentNews')
+      .then(response => response.json())
+      .then(data => {
+        const newsDiv = document.getElementById('news');
+        data.forEach(article => {
+          const articleElement = document.createElement('div');
+          articleElement.innerHTML = `
+            <h3>${article.title}</h3>
+            <p>${article.content}</p>
+            <hr>
+          `;
+          newsDiv.appendChild(articleElement);
+        });
+      })
+      .catch(error => console.log(error));
+  </script>
+</body>
+</html>
