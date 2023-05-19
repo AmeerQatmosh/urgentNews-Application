@@ -1,6 +1,7 @@
 version: '3'
 services:
   database:
+    image: ameerqatmosh/urgentnews-database
     build:
       context: ./database
     ports:
@@ -11,6 +12,7 @@ services:
       MYSQL_DATABASE: urgentnews
 
   backend:
+    image: ameerqatmosh/urgentnews-backend
     build: ./backend
     ports:
       - "5000:5000"
@@ -21,6 +23,7 @@ services:
       - ./backend:/app
 
   frontend:
+    image: ameerqatmosh/urgentnews-frontend
     build:
       context: ./frontend
     ports:
